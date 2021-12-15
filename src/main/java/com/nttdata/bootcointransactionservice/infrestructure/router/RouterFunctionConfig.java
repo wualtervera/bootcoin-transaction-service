@@ -18,7 +18,6 @@ public class RouterFunctionConfig {
     @Bean
     public RouterFunction<ServerResponse> routes(BootcoinTransactionHandler bootcoinTransactionHandler) {
         return route(GET(uri), bootcoinTransactionHandler::getall)
-                .andRoute(GET(uri), bootcoinTransactionHandler::getall)
                 .andRoute(GET(uri.concat("/{id}")), bootcoinTransactionHandler::getOne)
                 .andRoute(POST(uri), bootcoinTransactionHandler::save)
                 .andRoute(PUT(uri.concat("/{id}")), bootcoinTransactionHandler::update)

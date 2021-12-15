@@ -39,8 +39,6 @@ public class BootcoinTransactionHandler {
     private Validator validator;
 
     public Mono<ServerResponse> getall(ServerRequest serverRequest) {
-        //Wallet wallet = new Wallet("1", "DNI", "45236852", "975804256", "12SD2SD1S2DS2ER2WEWW", "wvera@gmail.com", 200.0, LocalDateTime.now());
-        //return ServerResponse.ok().contentType(APPLICATION_JSON).body(Mono.just(wallet), Wallet.class);
         return ServerResponse.ok().contentType(APPLICATION_JSON)
                 .body(bootcoinTransactionOperations.findAll(), BootcoinTransaction.class)
                 .switchIfEmpty(ServerResponse.notFound().build());

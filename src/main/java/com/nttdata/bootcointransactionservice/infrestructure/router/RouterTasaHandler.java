@@ -10,7 +10,7 @@ import static org.springframework.web.reactive.function.server.RequestPredicates
 import static org.springframework.web.reactive.function.server.RequestPredicates.DELETE;
 import static org.springframework.web.reactive.function.server.RouterFunctions.route;
 
-@Configuration
+//@Configuration
 public class RouterTasaHandler {
     String uri2 = "api/v1/tasa";
     @Bean

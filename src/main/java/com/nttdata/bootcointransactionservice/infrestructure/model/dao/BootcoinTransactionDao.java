@@ -12,11 +12,10 @@ import java.time.LocalDateTime;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Document("walletTransaction")
+@Document("bootcointTransaction")
 public class BootcoinTransactionDao {
     @Id
     private String id;
-    @NotNull
     private int TypeOperation;  //(1)COMPRA, (2)VENTA
     private String idComprador;
     private String idVendedor;

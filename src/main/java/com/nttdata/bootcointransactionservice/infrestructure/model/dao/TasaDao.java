@@ -10,12 +10,12 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Document("typeTransaction")
+@Document("tasaTransaction")
 public class TasaDao {
     @Id
     private String id;
     @NonNull
-    private  String type;
+    private  String type; //VENTA COMPRA
     @NonNull
     private String taza;
 }
