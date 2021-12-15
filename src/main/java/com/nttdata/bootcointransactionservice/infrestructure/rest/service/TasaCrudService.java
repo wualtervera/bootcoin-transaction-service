@@ -5,11 +5,16 @@ import com.nttdata.bootcointransactionservice.application.model.TasaRepository;
 import com.nttdata.bootcointransactionservice.domain.Tasa;
 import com.nttdata.bootcointransactionservice.infrestructure.model.dao.TasaDao;
 import com.nttdata.bootcointransactionservice.infrestructure.rest.repository.TasaCrudRepository;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
-public class TasaCrudService implements TasaRepository {
+@Slf4j
+@Component
+public class TasaCrudService  implements TasaRepository{
+
     @Autowired
     private ObjectMapper objectMapper;
 

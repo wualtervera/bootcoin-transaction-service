@@ -23,22 +23,7 @@ public class RouterFunctionConfig {
                 .andRoute(POST(uri), bootcoinTransactionHandler::save)
                 .andRoute(PUT(uri.concat("/{id}")), bootcoinTransactionHandler::update)
                 .andRoute(DELETE(uri.concat("/{id}")), bootcoinTransactionHandler::delete);
-
-
     }
-
-    String uri2 = "api/v1/tasa";
-    @Bean
-    public RouterFunction<ServerResponse> routes2(TasaHandler tasaHandler) {
-        return route(GET(uri), tasaHandler::getall)
-                .andRoute(GET(uri.concat("/{id}")), tasaHandler::getOne)
-                .andRoute(POST(uri), tasaHandler::save)
-                .andRoute(PUT(uri.concat("/{id}")), tasaHandler::update)
-                .andRoute(DELETE(uri.concat("/{id}")), tasaHandler::delete);
-
-
-    }
-
 
 
 }

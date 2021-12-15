@@ -15,15 +15,15 @@ import org.springframework.stereotype.Service;
 public class BootcoinTransactionConsumer {
 
     @Autowired
-    private BootcoinTransactionCrudService walletTransactionCrudService;
+    private BootcoinTransactionCrudService bootcoinTransactionCrudService;
 
     @KafkaListener(
-            topics = "${custom.kafka.topic-name-mobilewallet}",
+            topics = "${custom.kafka.topic-name-bootcoin}",
             groupId = "${custom.kafka.group-id}",
             containerFactory = "walletConcurrentKafkaListenerContainerFactory")
     public void consumer(@Payload BootcoinTransaction bootcoinTransaction, @Headers MessageHeaders headers){
         if (bootcoinTransaction.getState().name().equals("SUCCESSFUL")){
-            walletTransactionCrudService.save(bootcoinTransaction).subscribe(walletTra -> log.info("SUCCESSFUL Trnsaction! [{}]", walletTra));
+            bootcoinTransactionCrudService.save(bootcoinTransaction).subscribe(walletTra -> log.info("SUCCESSFUL Trnsaction! [{}]", walletTra));
         }else {
             log.error("REJECTED Transaction [{}]", bootcoinTransaction);
         }
