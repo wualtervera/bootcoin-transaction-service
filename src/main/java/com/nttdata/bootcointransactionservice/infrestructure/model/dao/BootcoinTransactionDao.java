@@ -16,9 +16,8 @@ import java.time.LocalDateTime;
 public class BootcoinTransactionDao {
     @Id
     private String id;
-    private int TypeOperation;  //(1)COMPRA, (2)VENTA
-    private String idComprador;
-    private String idVendedor;
+    private String phoneBuyer;
+    private String phoneSeller;
     private Double amountSoles;
     private Double amountCoins;
     private TypePayment typePayment;

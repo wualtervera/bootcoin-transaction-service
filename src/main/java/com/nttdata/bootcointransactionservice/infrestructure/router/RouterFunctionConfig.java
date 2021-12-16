@@ -1,7 +1,6 @@
 package com.nttdata.bootcointransactionservice.infrestructure.router;
 
 import com.nttdata.bootcointransactionservice.infrestructure.rest.handler.BootcoinTransactionHandler;
-import com.nttdata.bootcointransactionservice.infrestructure.rest.handler.TasaHandler;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 

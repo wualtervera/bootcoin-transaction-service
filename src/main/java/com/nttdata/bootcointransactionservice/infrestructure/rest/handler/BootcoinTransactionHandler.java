@@ -2,6 +2,7 @@ package com.nttdata.bootcointransactionservice.infrestructure.rest.handler;
 
 import com.nttdata.bootcointransactionservice.application.operations.BootcoinTransactionOperations;
 import com.nttdata.bootcointransactionservice.domain.BootcoinTransaction;
+import com.nttdata.bootcointransactionservice.domain.Tasa;
 import com.nttdata.bootcointransactionservice.infrestructure.model.dao.BootcoinTransactionDao;
 import com.nttdata.bootcointransactionservice.infrestructure.producer.BootcoinTransactionProducer;
 import lombok.extern.slf4j.Slf4j;
@@ -55,6 +56,7 @@ public class BootcoinTransactionHandler {
 
     public Mono<ServerResponse> save(ServerRequest serverRequest) {
         Mono<BootcoinTransaction> walletTransactionMono = serverRequest.bodyToMono(BootcoinTransaction.class);
+        Tasa tasa = new Tasa();
 
         return walletTransactionMono.flatMap(walletTransaction -> {
             Errors errors = new BeanPropertyBindingResult(walletTransaction, BootcoinTransaction.class.getName());
@@ -74,7 +76,7 @@ public class BootcoinTransactionHandler {
                 BootcoinTransactionProducer.producer(walletTransaction);
                 log.info("Sent Message!");
 
-                return  ServerResponse
+                return ServerResponse
                         .status(HttpStatus.CREATED)
                         .contentType(MediaType.APPLICATION_JSON)
                         .body(fromValue(walletTransaction));

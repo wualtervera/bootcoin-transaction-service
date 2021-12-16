@@ -14,11 +14,11 @@ import reactor.core.publisher.Mono;
 
 import static org.springframework.http.MediaType.APPLICATION_JSON;
 import static org.springframework.web.reactive.function.BodyInserters.fromValue;
-@Slf4j
-@Component
+/*@Slf4j
+@Component*/
 public class TasaHandler {
 
-    @Autowired
+    /*@Autowired
     private TasaOperations tasaOperations;
 
     public Mono<ServerResponse> getall(ServerRequest serverRequest) {
@@ -64,4 +64,6 @@ public class TasaHandler {
                 .flatMap(tasa -> tasaOperations.delete(id).then(ServerResponse.noContent().build()))
                 .switchIfEmpty(ServerResponse.notFound().build());
     }
+
+     */
 }

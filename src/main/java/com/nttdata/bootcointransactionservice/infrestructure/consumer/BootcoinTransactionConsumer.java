@@ -21,10 +21,15 @@ public class BootcoinTransactionConsumer {
             topics = "${custom.kafka.topic-name-bootcoin}",
             groupId = "${custom.kafka.group-id}",
             containerFactory = "walletConcurrentKafkaListenerContainerFactory")
-    public void consumer(@Payload BootcoinTransaction bootcoinTransaction, @Headers MessageHeaders headers){
-        if (bootcoinTransaction.getState().name().equals("SUCCESSFUL")){
-            bootcoinTransactionCrudService.save(bootcoinTransaction).subscribe(walletTra -> log.info("SUCCESSFUL Trnsaction! [{}]", walletTra));
-        }else {
+    public void consumer(@Payload BootcoinTransaction bootcoinTransaction, @Headers MessageHeaders headers) {
+        if (bootcoinTransaction.getState().name().equals("ACCEPTED")) {
+
+            bootcoinTransactionCrudService.save(bootcoinTransaction).subscribe(bootcoinTran -> {
+                log.info("SUCCESSFUL Trnsaction! [{}]", bootcoinTran);
+                bootcoinTransaction.setState(BootcoinTransaction.State.SUCCESSFUL);
+                bootcoinTransactionCrudService.update(bootcoinTran.getId(), bootcoinTran);
+            });
+        } else {
             log.error("REJECTED Transaction [{}]", bootcoinTransaction);
         }
     }

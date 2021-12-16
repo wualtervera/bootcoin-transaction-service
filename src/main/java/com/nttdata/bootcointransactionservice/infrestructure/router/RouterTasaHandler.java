@@ -12,7 +12,7 @@ import static org.springframework.web.reactive.function.server.RouterFunctions.r
 
 //@Configuration
 public class RouterTasaHandler {
-    String uri2 = "api/v1/tasa";
+    /*String uri2 = "api/v1/tasa";
     @Bean
     public RouterFunction<ServerResponse> routes2(TasaHandler tasaHandler) {
         return route(GET(uri2), tasaHandler::getall)
@@ -22,5 +22,5 @@ public class RouterTasaHandler {
                 .andRoute(DELETE(uri2.concat("/{id}")), tasaHandler::delete);
 
 
-    }
+    }*/
 }

@@ -1,6 +1,7 @@
 package com.nttdata.bootcointransactionservice.infrestructure.producer;
 
 import com.nttdata.bootcointransactionservice.domain.BootcoinTransaction;
+import com.nttdata.bootcointransactionservice.domain.Tasa;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -21,6 +22,16 @@ public class BootcoinTransactionProducer {
     private KafkaTemplate<String, BootcoinTransaction> walletTransactionKafkaTemplate;
 
     public void producer(BootcoinTransaction bootcoinTransactionDto) {
+        Tasa tasa = new Tasa();
+        /*//Compra
+        if (bootcoinTransactionDto.getTypeOperation() == 1){
+            bootcoinTransactionDto.setAmountCoins(bootcoinTransactionDto.getAmountCoins());
+        }
+        //Venta
+        if (bootcoinTransactionDto.getTypeOperation() == 2){
+            bootcoinTransactionDto.setAmountCoins(bootcoinTransactionDto.getAmountCoins());
+        }*/
+
         log.info("Sending message...");
         Message<BootcoinTransaction> message = MessageBuilder
                 .withPayload(bootcoinTransactionDto)
