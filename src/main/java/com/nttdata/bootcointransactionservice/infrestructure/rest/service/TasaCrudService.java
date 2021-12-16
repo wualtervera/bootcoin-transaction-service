@@ -11,6 +11,8 @@ import org.springframework.stereotype.Component;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
+import java.time.LocalDateTime;
+
 @Slf4j
 @Component
 public class TasaCrudService  implements TasaRepository{
@@ -33,11 +35,13 @@ public class TasaCrudService  implements TasaRepository{
 
     @Override
     public Mono<Tasa> save(Tasa tasa) {
+        tasa.setCreateAt(LocalDateTime.now());
         return tasaCrudRepository.save(this.toTasaDao(tasa)).map(this::toTasa);
     }
 
     @Override
     public Mono<Tasa> update(String id, Tasa tasa) {
+        tasa.setCreateAt(LocalDateTime.now());
         return tasaCrudRepository.findById(id)
                 .flatMap(tasaDao -> {
                     tasa.setId(tasaDao.getId());

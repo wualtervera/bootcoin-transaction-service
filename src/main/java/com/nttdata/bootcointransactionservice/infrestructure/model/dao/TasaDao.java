@@ -7,6 +7,8 @@ import lombok.NonNull;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import java.time.LocalDateTime;
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -15,7 +17,9 @@ public class TasaDao {
     @Id
     private String id;
     @NonNull
-    private  String type; //VENTA COMPRA
+    private  double tasaCompra = 50;
     @NonNull
-    private String taza;
+    private double tasaVenta = 80;
+    @NonNull
+    private LocalDateTime createAt;
 }

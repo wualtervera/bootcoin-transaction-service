@@ -11,7 +11,7 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 public class Tasa {
     private String id;
-    private  double tasaCompra = 50;
-    private double tasaVenta = 80;
+    private  double tasaCompra;
+    private double tasaVenta;
     private LocalDateTime createAt;
 }
